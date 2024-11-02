@@ -1,4 +1,4 @@
-package com.example.demo.util;
+package br.com.itau.casePix.util;
 
 public enum TipoChave {
 

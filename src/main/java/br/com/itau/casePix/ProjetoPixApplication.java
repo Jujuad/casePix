@@ -1,4 +1,4 @@
-package com.example.demo;
+package br.com.itau.casePix;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
