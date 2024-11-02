@@ -1,4 +1,4 @@
-package com.example.demo.model;
+package br.com.itau.casePix.model;
 
 import jakarta.persistence.*;
 import lombok.Data;

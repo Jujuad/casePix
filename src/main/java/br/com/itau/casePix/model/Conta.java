@@ -1,4 +1,4 @@
-package com.example.demo.model;
+package br.com.itau.casePix.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -32,11 +32,11 @@ public class Conta {
     @Column(name = "numero_conta", nullable = false, length = 8)
     private int numeroConta;
 
-    @Column(name = "nome_titular", nullable = false, length = 30)
-    private String nomeTitular;
+    @Column(name = "nome_correntista", nullable = false, length = 30)
+    private String nomeCorrentista;
 
-    @Column(name = "sobrenome_titular", length = 45)
-    private String sobrenomeTitular;
+    @Column(name = "sobrenome_correntista", length = 45)
+    private String sobrenomeCorrentista;
 
     @Column(name = "data_hora_inclusao", nullable = false)
     private LocalDateTime dataHoraInclusao;
