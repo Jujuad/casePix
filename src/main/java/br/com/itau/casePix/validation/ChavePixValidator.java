@@ -9,6 +9,10 @@ import java.util.regex.Pattern;
 public class ChavePixValidator {
 
     public static void validarChave(ChavePix chavePix) {
+        if (chavePix.getTipoChave() == null) {
+            throw new ChavePixInvalidException("Tipo de chave inválido.");
+        }
+
         String valorChave = chavePix.getValorChave();
         switch (chavePix.getTipoChave()) {
             case CELULAR:

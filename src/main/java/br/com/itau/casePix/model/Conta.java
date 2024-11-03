@@ -28,10 +28,10 @@ public class Conta {
     private String tipoConta;
 
     @Column(name = "numero_agencia", nullable = false, length = 4)
-    private int numeroAgencia;
+    private Integer numeroAgencia;
 
     @Column(name = "numero_conta", nullable = false, length = 8)
-    private int numeroConta;
+    private Integer numeroConta;
 
     @Column(name = "nome_correntista", nullable = false, length = 30)
     private String nomeCorrentista;
