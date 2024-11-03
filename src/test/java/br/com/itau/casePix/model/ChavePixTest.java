@@ -1,5 +1,6 @@
 package br.com.itau.casePix.model;
 
+import br.com.itau.casePix.enumerators.TipoChaveEnum;
 import br.com.itau.casePix.enumerators.TipoClienteEnum;
 import br.com.itau.casePix.enumerators.TipoChaveEnumTest;
 import org.junit.jupiter.api.Test;
@@ -23,7 +24,7 @@ class ChavePixTest {
 
         ChavePix chavePix = ChavePix.builder()
                 .conta(conta)
-                .tipoChave(TipoChaveEnumTest.CPF)
+                .tipoChave(TipoChaveEnum.CPF)
                 .valorChave("123.456.789-00")
                 .dataHoraInclusao(LocalDateTime.now())
                 .build();
@@ -31,7 +32,7 @@ class ChavePixTest {
         assertNotNull(chavePix);
         assertNotNull(chavePix.getIdChavePix());
         assertEquals("123.456.789-00", chavePix.getValorChave());
-        assertEquals(TipoChaveEnumTest.CPF, chavePix.getTipoChave());
+        assertEquals(TipoChaveEnum.CPF, chavePix.getTipoChave());
         assertEquals(conta, chavePix.getConta());
     }
 
