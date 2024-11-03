@@ -1,5 +1,6 @@
 package br.com.itau.casePix.service;
 
+import br.com.itau.casePix.enumerators.TipoChaveEnum;
 import br.com.itau.casePix.exception.ChavePixInvalidException;
 import br.com.itau.casePix.model.ChavePix;
 import br.com.itau.casePix.repository.ChavePixRepository;
@@ -34,14 +35,19 @@ public class ChavePixServiceTest {
     @Test
     public void testCriarChave() {
         ChavePix chavePix = new ChavePix();
+        chavePix.setTipoChave(TipoChaveEnum.valueOf("EMAIL"));
+        chavePix.setValorChave("teste@example.com");
         chavePix.setDataHoraInclusao(LocalDateTime.now());
+
         when(chavePixRepository.save(any(ChavePix.class))).thenReturn(chavePix);
 
         ChavePix novaChave = chavePixService.criarChave(chavePix);
 
         assertNotNull(novaChave);
+        assertEquals(chavePix.getValorChave(), novaChave.getValorChave());
         verify(chavePixRepository, times(1)).save(chavePix);
     }
+
 
     @Test
     public void testConsultarChavesComId() {
@@ -73,7 +79,15 @@ public class ChavePixServiceTest {
     public void testAtualizarChave() {
         UUID idChavePix = UUID.randomUUID();
         ChavePix chavePixExistente = new ChavePix();
+        chavePixExistente.setIdChavePix(idChavePix);
+        chavePixExistente.setTipoChave(TipoChaveEnum.valueOf("EMAIL"));
+        chavePixExistente.setValorChave("example@example.com");
+
         ChavePix chavePixAtualizada = new ChavePix();
+        chavePixAtualizada.setIdChavePix(idChavePix);
+        chavePixAtualizada.setTipoChave(TipoChaveEnum.valueOf("EMAIL"));
+        chavePixAtualizada.setValorChave("new_example@example.com");
+
         when(chavePixRepository.findById(idChavePix)).thenReturn(Optional.of(chavePixExistente));
         when(chavePixRepository.save(chavePixExistente)).thenReturn(chavePixAtualizada);
 
@@ -83,6 +97,7 @@ public class ChavePixServiceTest {
         verify(chavePixRepository, times(1)).findById(idChavePix);
         verify(chavePixRepository, times(1)).save(chavePixExistente);
     }
+
 
     @Test
     public void testObterChave() {
