@@ -18,16 +18,17 @@ public class ContaDTO {
     private String tipoConta;
 
     @NotNull(message = "Número da agência não pode ser nulo.")
-    private int numeroAgencia;
+    private Integer numeroAgencia;
 
     @NotNull(message = "Número da conta não pode ser nulo.")
-    private int numeroConta;
+    private Integer numeroConta;
 
     @NotNull(message = "Nome do titular não pode ser nulo.")
     @Size(max = 30, message = "Nome do titular deve ter no máximo 30 caracteres.")
     private String nomeCorrentista;
 
     @Size(max = 45, message = "Sobrenome do titular deve ter no máximo 45 caracteres.")
+    @NotNull(message = "Sobrenome do titular não pode ser nulo.")
     private String sobrenomeCorrentista;
 
     @NotNull(message = "Data de inclusão não pode ser nula.")

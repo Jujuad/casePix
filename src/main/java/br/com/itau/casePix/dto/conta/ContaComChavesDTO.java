@@ -18,15 +18,16 @@ public class ContaComChavesDTO {
     private String tipoConta;
 
     @NotNull(message = "Número da agência não pode ser nulo.")
-    private int numeroAgencia;
+    private Integer numeroAgencia;
 
     @NotNull(message = "Número da conta não pode ser nulo.")
-    private int numeroConta;
+    private Integer numeroConta;
 
     @NotNull(message = "Nome do titular não pode ser nulo.")
     @Size(max = 30, message = "Nome do titular deve ter no máximo 30 caracteres.")
     private String nomeCorrentista;
 
+    @NotNull(message = "Sobrenome do titular não pode ser nulo.")
     @Size(max = 45, message = "Sobrenome do titular deve ter no máximo 45 caracteres.")
     private String sobrenomeCorrentista;
 
@@ -35,3 +36,4 @@ public class ContaComChavesDTO {
 
     private List<ChavePixDTO> chavesPix;
 }
+
