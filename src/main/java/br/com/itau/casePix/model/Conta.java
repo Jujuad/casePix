@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import br.com.itau.casePix.enumerators.TipoClienteEnum;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -40,6 +41,10 @@ public class Conta {
 
     @Column(name = "data_hora_inclusao", nullable = false)
     private LocalDateTime dataHoraInclusao;
+
+    @Column(name = "tipo_cliente", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private TipoClienteEnum tipoCliente;
 
     @OneToMany(mappedBy = "conta", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ChavePix> chavesPix;

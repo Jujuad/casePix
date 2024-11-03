@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import br.com.itau.casePix.enumerators.TipoChaveEnum;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -19,6 +20,7 @@ public class ChavePix {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+
     @Column(name = "pix_id", nullable = false, updatable = false)
     private UUID idChavePix;
 
@@ -27,7 +29,8 @@ public class ChavePix {
     private Conta conta;
 
     @Column(name = "tipo_chave", nullable = false, length = 9)
-    private String tipoChave;
+    @Enumerated(EnumType.STRING)
+    private TipoChaveEnum tipoChave;
 
     @Column(name = "valor_chave", nullable = false, unique = true, length = 77)
     private String valorChave;
