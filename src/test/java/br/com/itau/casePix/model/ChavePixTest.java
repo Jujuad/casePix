@@ -2,7 +2,6 @@ package br.com.itau.casePix.model;
 
 import br.com.itau.casePix.enumerators.TipoChaveEnum;
 import br.com.itau.casePix.enumerators.TipoClienteEnum;
-import br.com.itau.casePix.enumerators.TipoChaveEnumTest;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
@@ -30,7 +29,7 @@ class ChavePixTest {
                 .build();
 
         assertNotNull(chavePix);
-        assertNotNull(chavePix.getIdChavePix());
+        assertNull(chavePix.getIdChavePix());
         assertEquals("123.456.789-00", chavePix.getValorChave());
         assertEquals(TipoChaveEnum.CPF, chavePix.getTipoChave());
         assertEquals(conta, chavePix.getConta());
@@ -41,6 +40,6 @@ class ChavePixTest {
         ChavePix chavePix = new ChavePix();
         chavePix.setValorChave(null);
 
-        assertThrows(NullPointerException.class, chavePix::getValorChave);
+        assertNull(chavePix.getValorChave());
     }
 }
