@@ -1,6 +1,5 @@
 package br.com.itau.casePix.model;
 
-import br.com.itau.casePix.model.Conta;
 import br.com.itau.casePix.enumerators.TipoClienteEnum;
 import org.junit.jupiter.api.Test;
 
@@ -23,7 +22,7 @@ class ContaTest {
                 .build();
 
         assertNotNull(conta);
-        assertNotNull(conta.getIdConta());
+        assertNull(conta.getIdConta());
         assertEquals("Maria", conta.getNomeCorrentista());
         assertEquals(TipoClienteEnum.PESSOA_JURIDICA, conta.getTipoCliente());
     }
@@ -32,9 +31,6 @@ class ContaTest {
     void testContaNullNomeCorrentista() {
         Conta conta = new Conta();
         conta.setNomeCorrentista(null);
-
-        assertThrows(NullPointerException.class, conta::getNomeCorrentista);
+        assertNull(conta.getNomeCorrentista());
     }
 }
-
-

@@ -39,5 +39,27 @@ public class ContaCreateDTOTest {
         var violations = validator.validate(contaCreate);
         assertEquals(4, violations.size(), "Deve haver 4 violações de validação");
     }
-}
 
+    @Test
+    public void testInvalidNomeCorrentistaTooLong() {
+        ContaCreateDTO contaCreate = new ContaCreateDTO();
+        contaCreate.setNomeCorrentista("Maria muito longa que ultrapassa os limites permitidos");
+        contaCreate.setTipoConta("Conta Poupança");
+        contaCreate.setNumeroAgencia(1234);
+        contaCreate.setNumeroConta(56789);
+
+        var violations = validator.validate(contaCreate);
+        assertEquals(1, violations.size(), "Deve haver 1 violação de validação para nome muito longo");
+    }
+
+    @Test
+    public void testInvalidTipoContaNull() {
+        ContaCreateDTO contaCreate = new ContaCreateDTO();
+        contaCreate.setNumeroAgencia(1234);
+        contaCreate.setNumeroConta(56789);
+        contaCreate.setNomeCorrentista("Maria");
+
+        var violations = validator.validate(contaCreate);
+        assertEquals(1, violations.size(), "Deve haver 1 violação de validação para tipo de conta nulo");
+    }
+}
