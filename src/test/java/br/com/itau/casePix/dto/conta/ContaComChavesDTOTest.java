@@ -43,6 +43,6 @@ public class ContaComChavesDTOTest {
 
         var violations = validator.validate(conta);
         assertEquals(6, violations.size(), "Deve haver 6 violações de validação");
+
     }
 }
-

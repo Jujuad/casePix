@@ -42,7 +42,14 @@ public class ContaDTOTest {
         ContaDTO conta = new ContaDTO();
 
         var violations = validator.validate(conta);
+
         assertEquals(6, violations.size(), "Deve haver 6 violações de validação");
+
+        assertTrue(violations.stream().anyMatch(v -> v.getMessage().equals("Tipo de conta não pode ser nulo.")));
+        assertTrue(violations.stream().anyMatch(v -> v.getMessage().equals("Número da agência não pode ser nulo.")));
+        assertTrue(violations.stream().anyMatch(v -> v.getMessage().equals("Número da conta não pode ser nulo.")));
+        assertTrue(violations.stream().anyMatch(v -> v.getMessage().equals("Nome do titular não pode ser nulo.")));
+        assertTrue(violations.stream().anyMatch(v -> v.getMessage().equals("Sobrenome do titular não pode ser nulo.")));
+        assertTrue(violations.stream().anyMatch(v -> v.getMessage().equals("Data de inclusão não pode ser nula.")));
     }
 }
-
